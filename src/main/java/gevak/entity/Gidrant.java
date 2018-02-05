@@ -41,7 +41,7 @@ public class Gidrant {
     public Gidrant() {
     }
 
-    public Gidrant(String street_txt, int bud, String zrazok, int diametr, String typ, int spravnyi, int vkazivnyk) {
+    public Gidrant(String street_txt, int bud, String zrazok, int diametr, String typ, int spravnyi, int vkazivnyk, double x, double y) {
         this.street_txt = street_txt;
         this.bud = bud;
         this.zrazok = zrazok;
@@ -49,6 +49,24 @@ public class Gidrant {
         this.typ = typ;
         this.spravnyi = spravnyi;
         this.vkazivnyk = vkazivnyk;
+        this.adminrayon_id = 0;
+        this.pidrozdil_id = 0;
+        this.prymitka = "";
+        this.argis_id = 0;
+        this.perevirka = new Date();
+        this.nespravnist = 0;
+        this.nedolik = 0;
+        this.street_id = 0;
+        this.nas_punkt = "";
+        this.the_geom = "";
+        this.x = x;
+        this.y = y;
+        this.tmp = "";
+        this.photo = "";
+        this.address = "";
+        this.spravnist = "";
+        this.type = "";
+        this.vkazivnik = "";
     }
 
     public int getId() {

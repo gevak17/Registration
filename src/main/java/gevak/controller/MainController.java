@@ -102,7 +102,7 @@ public class MainController {
                               @RequestParam String vkazivnik,
                               @RequestParam double lng,
                               @RequestParam double lat) {
-        Gidrant gidrant = new Gidrant(address, house, zrazok, type, diametr, spravnist, vkazivnik, lng, lat);
+        Gidrant gidrant = new Gidrant();
 //        int id = user.getId();
 //        gidrant.set
         gidrantService.save(gidrant);
