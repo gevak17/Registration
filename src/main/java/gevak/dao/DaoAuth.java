@@ -98,7 +98,7 @@ public class DaoAuth extends AbstractUserDetailsAuthenticationProvider {
 
         try {
 //            username = new String(convertEncoding(username.getBytes("windows-1251"), "windows-1251", "utf-8"));
-            username = new String(username.getBytes("ISO-8859-1"),"cp1251");
+            username = new String(username.getBytes("ISO-8859-1"),"UTF-8");
             loadedUser = this.getUserDetailsService().loadUserByUsername(username);
         }
         catch (UsernameNotFoundException notFound) {

@@ -1,24 +1,22 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <ul class="menu">
-    <li><a href="/">Main page</a></li>
-    <t:authorize access="!hasRole('ROLE_USER')">
-        <li><a href="/registration">Registration</a></li>
-    </t:authorize>
-    <%--<li><a href="/allUser">Show All User</a></li>--%>
-    <%--<li><a href="/user">User page</a></li>--%>
-    <%--<li><a href="/admin">Admin page</a></li>--%>
+    <li><a href="/">Головна</a></li>
+
     <t:authorize access="hasRole('ROLE_USER')">
-        <li><a href="/user">User page</a></li>
+        <li><a href="/user">Карта</a></li>
     </t:authorize>
-    <%--<t:authorize access="hasRole('ROLE_USER')">--%>
-    <li><a href="/allUser">List users</a></li>
-    <%--</t:authorize>--%>
-    <t:authorize access="!hasRole('ROLE_USER')">
-        <li><a href="/login">Sign in</a></li>
+
+    <t:authorize access="hasRole('ROLE_ADMIN')">
+        <li><a href="/admin">МЕНЕДЖЕР ПАРОЛІВ</a></li>
     </t:authorize>
-    <t:authorize access="hasRole('ROLE_USER')">
-        <li><a href="/logout">Exit</a></li>
+
+    <t:authorize access="!hasAnyRole('ROLE_USER','ROLE_ADMIN')">
+        <li><a href="/login">Увійти</a></li>
     </t:authorize>
-    <%--<t:authorize access="hasRole('ROLE_ADMIN')">--%>
-    <%--<li><a href="/admin">Admin page</a></li>--%>
-    <%--</t:authorize>--%>
+
+    <t:authorize access="hasAnyRole('ROLE_USER','ROLE_ADMIN')">
+        <li><a href="/logout">Вийти</a></li>
+    </t:authorize>
 </ul>
+

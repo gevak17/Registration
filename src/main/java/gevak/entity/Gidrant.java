@@ -1,11 +1,10 @@
 package gevak.entity;
 
 import javax.persistence.*;
-import javax.xml.crypto.Data;
 import java.util.Date;
 
 @Entity
-//@Table(name = "gidrant")
+@Table(name = "gidrant")
 public class Gidrant {
 
     @Id
@@ -13,9 +12,9 @@ public class Gidrant {
     private int id;
 
     private String street_txt;
-    private int bud;
+    private String bud;
     private String zrazok;
-    private int diametr;
+    private String diametr;
     private String typ;
     private int spravnyi;
     private int vkazivnyk;
@@ -26,11 +25,12 @@ public class Gidrant {
     private Date perevirka;
     private int nespravnist;
     private int nedolik;
-    private long street_id;
+    private String street_id;
     private String nas_punkt;
-    private String the_geom;
-    private double x;
-    private double y;
+    @Column(name = "x")
+    private double lng;
+    @Column(name = "y")
+    private double lat;
     private String tmp;
     private String photo;
     private String address;
@@ -40,8 +40,15 @@ public class Gidrant {
 
     public Gidrant() {
     }
+//
+//  логін:
+//  пароль:
 
-    public Gidrant(String street_txt, int bud, String zrazok, int diametr, String typ, int spravnyi, int vkazivnyk, double x, double y) {
+
+    public Gidrant(int id, double lng, double lat, String street_txt, String bud, String zrazok, String diametr, String typ, int spravnyi, int vkazivnyk) {
+        this.id = id;
+        this.lng = lng;
+        this.lat = lat;
         this.street_txt = street_txt;
         this.bud = bud;
         this.zrazok = zrazok;
@@ -49,24 +56,34 @@ public class Gidrant {
         this.typ = typ;
         this.spravnyi = spravnyi;
         this.vkazivnyk = vkazivnyk;
-        this.adminrayon_id = 0;
-        this.pidrozdil_id = 0;
-        this.prymitka = "";
-        this.argis_id = 0;
+    }
+
+    public Gidrant(double lng, double lat, String street_txt, String bud, String zrazok, String diametr, String typ, int spravnyi, int vkazivnyk) {
+        this.lng = lng;
+        this.lat = lat;
+        this.street_txt = street_txt;
+        this.bud = bud;
+        this.zrazok = zrazok;
+        this.diametr = diametr;
+        this.typ = typ;
+        this.spravnyi = spravnyi;
+        this.vkazivnyk = vkazivnyk;
+//        this.adminrayon_id = 0;
+//        this.pidrozdil_id = 0;
+//        this.prymitka = "";
+//        this.argis_id = 0;
         this.perevirka = new Date();
-        this.nespravnist = 0;
-        this.nedolik = 0;
-        this.street_id = 0;
-        this.nas_punkt = "";
-        this.the_geom = "";
-        this.x = x;
-        this.y = y;
-        this.tmp = "";
-        this.photo = "";
-        this.address = "";
-        this.spravnist = "";
-        this.type = "";
-        this.vkazivnik = "";
+//        this.nespravnist = 0;
+//        this.nedolik = 0;
+//        this.street_id = "";
+//        this.nas_punkt = "";
+
+//        this.tmp = "";
+//        this.photo = "";
+//        this.address = "";
+//        this.spravnist = "";
+//        this.type = "";
+//        this.vkazivnik = "";
     }
 
     public int getId() {
@@ -85,11 +102,11 @@ public class Gidrant {
         this.street_txt = street_txt;
     }
 
-    public int getBud() {
+    public String getBud() {
         return bud;
     }
 
-    public void setBud(int bud) {
+    public void setBud(String bud) {
         this.bud = bud;
     }
 
@@ -101,11 +118,11 @@ public class Gidrant {
         this.zrazok = zrazok;
     }
 
-    public int getDiametr() {
+    public String getDiametr() {
         return diametr;
     }
 
-    public void setDiametr(int diametr) {
+    public void setDiametr(String diametr) {
         this.diametr = diametr;
     }
 
@@ -189,11 +206,11 @@ public class Gidrant {
         this.nedolik = nedolik;
     }
 
-    public long getStreet_id() {
+    public String getStreet_id() {
         return street_id;
     }
 
-    public void setStreet_id(long street_id) {
+    public void setStreet_id(String street_id) {
         this.street_id = street_id;
     }
 
@@ -205,28 +222,20 @@ public class Gidrant {
         this.nas_punkt = nas_punkt;
     }
 
-    public String getThe_geom() {
-        return the_geom;
+    public double getLng() {
+        return lng;
     }
 
-    public void setThe_geom(String the_geom) {
-        this.the_geom = the_geom;
+    public void setLng(double lng) {
+        this.lng = lng;
     }
 
-    public double getX() {
-        return x;
+    public double getLat() {
+        return lat;
     }
 
-    public void setX(double x) {
-        this.x = x;
-    }
-
-    public double getY() {
-        return y;
-    }
-
-    public void setY(double y) {
-        this.y = y;
+    public void setLat(double lat) {
+        this.lat = lat;
     }
 
     public String getTmp() {
@@ -277,35 +286,20 @@ public class Gidrant {
         this.vkazivnik = vkazivnik;
     }
 
+
     @Override
     public String toString() {
         return "Gidrant{" +
                 "id=" + id +
                 ", street_txt='" + street_txt + '\'' +
-                ", bud=" + bud +
+                ", bud='" + bud + '\'' +
                 ", zrazok='" + zrazok + '\'' +
-                ", diametr=" + diametr +
+                ", diametr='" + diametr + '\'' +
                 ", typ='" + typ + '\'' +
                 ", spravnyi=" + spravnyi +
                 ", vkazivnyk=" + vkazivnyk +
-                ", adminrayon_id=" + adminrayon_id +
-                ", pidrozdil_id=" + pidrozdil_id +
-                ", prymitka='" + prymitka + '\'' +
-                ", argis_id=" + argis_id +
-                ", perevirka=" + perevirka +
-                ", nespravnist=" + nespravnist +
-                ", nedolik=" + nedolik +
-                ", street_id=" + street_id +
-                ", nas_punkt='" + nas_punkt + '\'' +
-                ", the_geom='" + the_geom + '\'' +
-                ", x=" + x +
-                ", y=" + y +
-                ", tmp='" + tmp + '\'' +
-                ", photo='" + photo + '\'' +
-                ", address='" + address + '\'' +
-                ", spravnist='" + spravnist + '\'' +
-                ", type='" + type + '\'' +
-                ", vkazivnik='" + vkazivnik + '\'' +
+                ", lng=" + lng +
+                ", lat=" + lat +
                 '}';
     }
 }

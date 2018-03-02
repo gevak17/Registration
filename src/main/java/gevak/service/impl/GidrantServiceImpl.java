@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 @Service
@@ -22,15 +23,24 @@ public class GidrantServiceImpl implements GidrantService {
     }
 
     @Override
-    public void edit(Gidrant gidrant) {
+    public void edit(Gidrant gidrant) throws UnsupportedEncodingException {
         Gidrant gidrantEdit = gidrantDAO.findOne(gidrant.getId());
-        gidrantEdit.setStreet_txt(gidrant.getStreet_txt());
+//        System.out.println("&&&&&&&&&&&&&&&&&&&& - - - -    "+gidrant);
+        String street_txt = gidrant.getStreet_txt();
+//        street_txt = new String(street_txt.getBytes("ISO-8859-1"),"UTF-8");
+//        System.out.println("&&&&&&&&&&&&&&&&&&&& - - - -    "+gidrant);
+//        Gidrant gidrantEdit = gidrantDAO.getOne(gidrant.getId());
+//        System.out.println("Gidrant  - "+gidrant);
+        gidrantEdit.setLng(gidrant.getLng());
+        gidrantEdit.setLat(gidrant.getLat());
+        gidrantEdit.setStreet_txt(street_txt);
         gidrantEdit.setBud(gidrant.getBud());
         gidrantEdit.setZrazok(gidrant.getZrazok());
         gidrantEdit.setDiametr(gidrant.getDiametr());
         gidrantEdit.setTyp(gidrant.getTyp());
         gidrantEdit.setSpravnyi(gidrant.getSpravnyi());
         gidrantEdit.setVkazivnyk(gidrant.getVkazivnyk());
+//        System.out.println("Gidrant edit - "+gidrantEdit);
         gidrantDAO.save(gidrantEdit);
     }
 

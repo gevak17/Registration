@@ -52,6 +52,7 @@ public class DataConfig {
         entityManager.setJpaVendorAdapter(vendorAdapter());
         entityManager.setPackagesToScan(env.getProperty("db.packageToScan"));
 
+
         Properties properties = new Properties();
         properties.setProperty(env.getProperty("db.hibernate.hbm"), env.getProperty("db.hibernate.hbm.value"));
 

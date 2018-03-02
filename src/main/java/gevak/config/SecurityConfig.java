@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configurers.provisioning.InMemoryUserDetailsManagerConfigurer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -41,23 +42,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
         return new InMemoryUserDetailsManagerConfigurer<>();
     }
 
-//    @Autowired
-//    public void configurGlobal(AuthenticationManagerBuilder builder, AuthenticationProvider provider) throws Exception {
-//        inMemoryConfigurer()
-//                .withUser("Admin")
-//                .password("ProstakChak")
-//                .roles("ADMIN")
-//                .and()
-//                .configure(builder);
-//        builder.authenticationProvider(provider);
-//
-//    }
+    @Autowired
+    public void configurGlobal(AuthenticationManagerBuilder builder, AuthenticationProvider provider) throws Exception {
+        inMemoryConfigurer()
+                .withUser("Admin")
+                .password("ProstakChak")
+                .roles("ADMIN")
+                .and()
+                .configure(builder);
+        builder.authenticationProvider(provider);
+
+    }
 
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-//                .antMatchers("/admin/**").access("hasRole('ADMIN')")
+                .antMatchers("/admin/**").access("hasRole('ADMIN')")
                 .antMatchers("/user/**").access("hasRole('USER')")
                 .and()
                 .formLogin().loginPage("/login")
