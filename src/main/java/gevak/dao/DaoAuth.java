@@ -1,5 +1,6 @@
 package gevak.dao;
 
+import gevak.entity.User;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -45,6 +46,7 @@ public class DaoAuth extends AbstractUserDetailsAuthenticationProvider {
     private SaltSource saltSource;
 
     private UserDetailsService userDetailsService;
+    private static User user;
 
     public DaoAuth() {
         setPasswordEncoder(new PlaintextPasswordEncoder());
@@ -81,6 +83,14 @@ public class DaoAuth extends AbstractUserDetailsAuthenticationProvider {
                     "AbstractUserDetailsAuthenticationProvider.badCredentials",
                     "Bad credentials"));
         }
+        if(userDetails instanceof  User){
+            user = (User) userDetails;
+        }
+//        System.out.println(userDetails);
+    }
+
+    public static int getUserId() {
+        return user.getId();
     }
 
     protected void doAfterPropertiesSet() throws Exception {

@@ -5,6 +5,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -21,6 +22,10 @@
         .menu li{
             display: inline-flex;
             list-style: none;
+        }
+        #map {
+            width: 80%;
+            /*height: 85vh;*/
         }
 
         a {
@@ -132,19 +137,7 @@
     <script src="http://10.114.10.48:8080/sodu2016/lib/purl.js"></script>
 
     <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>--%>
-    <style>
 
-       /* body {
-            height: 100vh;
-            width: 100vw;
-            padding: 0;
-            margin: 0;
-        }*/
-        #map {
-             width: 80%;
-             /*height: 85vh;*/
-        }
-    </style>
 <title>Карта Львівської області</title>
 
 </head>
@@ -168,8 +161,8 @@
             <input type="text" name="lat" value="" id="lat" placeholder="lat..." required><br>
             <input type="text" name="street_txt" id="street_txt" placeholder="street_txt..." required><br>
             <input type="text" name="bud" id="bud" placeholder="bud..." required><br>
-            <input type="text" name="zrazok" id="zrazok" placeholder="zrazok..." required size="1"><br>
-            <input type="text" name="typ" id="typ" placeholder="typ..." required size="1"><br>
+            <input type="text" name="zrazok" id="zrazok" placeholder="zrazok..." required maxlength="1"><br>
+            <input type="text" name="typ" id="typ" placeholder="typ..." required maxlength="1"><br>
             <input type="text" name="diametr" id="diametr" placeholder="diametr..." required><br>
             <input type="number" name="spravnyi" id="spravnyi" placeholder="spravnyi..." min="0" max="1" required><br>
             <input type="number" name="vkazivnyk" id="vkazivnyk" placeholder="vkazivnyk..." min="0" max="1" required><br>
@@ -180,30 +173,26 @@
                    name="${_csrf.parameterName}"
                    value="${_csrf.token}"/>
         </form>
-        
-
-
-        
     </div>
-    <div id="saveForm">
-        <h2>Додати новий</h2>
-        <form action="/saveGidrant" method="post">
-            <input type="text" id="lng1" name="lng" placeholder="lng..." required><br>
-            <input type="text" id="lat1" name="lat" placeholder="lat..." required><br>
-            <input type="text" name="street_txt"  placeholder="street_txt..." required><br>
-            <input type="text" name="bud"  placeholder="bud..." required ><br>
-            <input type="text" name="zrazok"  placeholder="zrazok..." required  size="1"><br>
-            <input type="text" name="typ"  placeholder="typ..." required size="1"><br>
-            <input type="text" name="diametr"  placeholder="diametr..." required><br>
-            <input type="number" name="spravnyi"  placeholder="spravnyi..." min="0" max="1" required><br>
-            <input type="number" name="vkazivnyk"  placeholder="vkazivnyk..." min="0" max="1" required><br>
-            <br>
-            <input type="submit" id="save" value="Зберегти">
-            <input type="hidden"
-                   name="${_csrf.parameterName}"
-                   value="${_csrf.token}"/>
-        </form>
-    </div>
+    <%--<div id="saveForm">--%>
+        <%--<h2>Додати новий</h2>--%>
+        <%--<form action="/saveGidrant" method="post">--%>
+            <%--<input type="text" id="lng1" name="lng" placeholder="lng..." required><br>--%>
+            <%--<input type="text" id="lat1" name="lat" placeholder="lat..." required><br>--%>
+            <%--<input type="text" name="street_txt"  placeholder="street_txt..." required><br>--%>
+            <%--<input type="text" name="bud"  placeholder="bud..." required ><br>--%>
+            <%--<input type="text" name="zrazok"  placeholder="zrazok..." required  size="1"><br>--%>
+            <%--<input type="text" name="typ"  placeholder="typ..." required size="1"><br>--%>
+            <%--<input type="text" name="diametr"  placeholder="diametr..." required><br>--%>
+            <%--<input type="number" name="spravnyi"  placeholder="spravnyi..." min="0" max="1" required><br>--%>
+            <%--<input type="number" name="vkazivnyk"  placeholder="vkazivnyk..." min="0" max="1" required><br>--%>
+            <%--<br>--%>
+            <%--<input type="submit" id="save" value="Зберегти">--%>
+            <%--<input type="hidden"--%>
+                   <%--name="${_csrf.parameterName}"--%>
+                   <%--value="${_csrf.token}"/>--%>
+        <%--</form>--%>
+    <%--</div>--%>
 </div>
         <h3 style="text-align: right">Тут необхідно заповнити всі поля</h3>
 <script src="js/var.js"></script>
@@ -215,7 +204,7 @@
 <%--</center>--%>
 
 
-
+<%--<button id="findUser">find user</button>--%>
 <%--<h4>Оберіть тип гідранта</h4>--%>
 <%--<select>--%>
 <%--<option>Справний</option>--%>
@@ -224,6 +213,21 @@
 <%--<a href="edit">edit gidrant</a>--%>
 
 <script type="application/javascript">
+
+    // $("#findUser").click(function(){
+    //     $.ajax({
+    //         url: '/findOneUser',
+    //         type: 'GET',
+    //         contentType: 'application/json',
+    //         success: function (result) {
+    //             pidrozdilId = result.pidrozdil_id;
+    //             console.log(pidrozdilId+" ---------pidrozdil id")
+    //         },
+    //         error: function () {
+    //             alert("error find user")
+    //         }
+    //     });
+    // });
 //----------------------------------------------------------------------
     $("#getLatLon").click(function(){
         getLatLon();

@@ -13,6 +13,16 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @ComponentScan("gevak")
 public class WebConfig extends WebMvcConfigurerAdapter{
 
+//    @Bean
+//    public FilterRegistrationBean filterRegistrationBean() {
+//        FilterRegistrationBean registrationBean = new FilterRegistrationBean();
+//        CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
+//        characterEncodingFilter.setForceEncoding(true);
+//        characterEncodingFilter.setEncoding("UTF-8");
+//        registrationBean.setFilter(characterEncodingFilter);
+//        return registrationBean;
+//    }
+
     @Bean
     public InternalResourceViewResolver viewResolver(){
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();

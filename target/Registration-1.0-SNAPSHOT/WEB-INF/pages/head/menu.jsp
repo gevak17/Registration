@@ -2,23 +2,22 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <ul class="menu">
     <li><a href="/">Головна</a></li>
-    <%--<t:authorize access="!hasRole('ROLE_USER')">--%>
-        <%--<li><a href="/login">Увійти</a></li>--%>
-    <%--</t:authorize>--%>
 
     <t:authorize access="hasRole('ROLE_USER')">
         <li><a href="/user">Карта</a></li>
     </t:authorize>
+
     <t:authorize access="hasRole('ROLE_ADMIN')">
         <li><a href="/admin">МЕНЕДЖЕР ПАРОЛІВ</a></li>
     </t:authorize>
 
-
     <t:authorize access="!hasAnyRole('ROLE_USER','ROLE_ADMIN')">
         <li><a href="/login">Увійти</a></li>
     </t:authorize>
+
     <t:authorize access="hasAnyRole('ROLE_USER','ROLE_ADMIN')">
         <li><a href="/logout">Вийти</a></li>
     </t:authorize>
+
 </ul>
 

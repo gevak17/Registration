@@ -11,12 +11,13 @@
 <center>
 <c:url var="loginUrl" value="/login"/>
 <form action="${loginUrl}" method="post">
-    <input type="text" name="username" placeholder="username">
+    <input id="userName" type="text" name="username" placeholder="username">
     <input type="password" name="password" placeholder="password">
-    <input type="submit" value="login">
+    <input class="findUser" type="submit" value="login">
     <input type="hidden"
            name="${_csrf.parameterName}"
            value="${_csrf.token}"/>
+
     <c:if test="${param.error!=null}">
         <h3>Ваш логін або пароль хибний</h3>
     </c:if>
@@ -26,6 +27,9 @@
 
 
 </form>
+
+
+
 </center>
 
 <%@include file="head/footer.jsp"%>

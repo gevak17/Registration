@@ -18,5 +18,6 @@
     <t:authorize access="hasAnyRole('ROLE_USER','ROLE_ADMIN')">
         <li><a href="/logout">Вийти</a></li>
     </t:authorize>
+
 </ul>
 

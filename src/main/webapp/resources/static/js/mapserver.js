@@ -42,7 +42,7 @@ map.on('popupopen', function (popup) {
             document.getElementById("vkazivnyk").value = vkazivnyk;
         },
         error: function () {
-            alert("dsadsadasdadsa")
+            alert("error")
         }
     });
 

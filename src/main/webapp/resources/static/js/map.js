@@ -291,7 +291,7 @@ var overlays = {
     //    "Гідранти" : torfSrc.getLayer("gidrant"),
     "Межі районів" : 	boundary,
     "Гідранти" : gidrant,
-	"Кластер гідрантів" : gidrantcluster,
+	// "Кластер гідрантів" : gidrantcluster,
 	"Інше протипожежне водопостачання" : vodopost,
 	"Торфполя" : torfSrc.getLayer("zona_torf"),
     "Хімічно-небезпечні об'єкти" : torfSrc.getLayer("cz_hno"),
@@ -308,7 +308,7 @@ var overlays = {
     //	"Інформація по затопленнях" : torfSrc.getLayer("rayon_stat"),
     "Інформація по затопленнях" : rayon_stat,
     "Затоплені райони" : rayon_stat_view,
-    "Розташування техніки" : tehnica,
+    // "Розташування техніки" : tehnica,
 	"ТПВ": tpv,
 	"Межі виїзду підрозділів ТЕСТ": torfSrc.getLayer("mezhi_vyizdu_dprch")
 

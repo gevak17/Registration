@@ -25,12 +25,7 @@ public class GidrantServiceImpl implements GidrantService {
     @Override
     public void edit(Gidrant gidrant) throws UnsupportedEncodingException {
         Gidrant gidrantEdit = gidrantDAO.findOne(gidrant.getId());
-//        System.out.println("&&&&&&&&&&&&&&&&&&&& - - - -    "+gidrant);
         String street_txt = gidrant.getStreet_txt();
-//        street_txt = new String(street_txt.getBytes("ISO-8859-1"),"UTF-8");
-//        System.out.println("&&&&&&&&&&&&&&&&&&&& - - - -    "+gidrant);
-//        Gidrant gidrantEdit = gidrantDAO.getOne(gidrant.getId());
-//        System.out.println("Gidrant  - "+gidrant);
         gidrantEdit.setLng(gidrant.getLng());
         gidrantEdit.setLat(gidrant.getLat());
         gidrantEdit.setStreet_txt(street_txt);
