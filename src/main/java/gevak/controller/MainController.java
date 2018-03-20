@@ -44,8 +44,8 @@ public class MainController {
     @GetMapping("/user")
     public String userPage(Model model) {
 //        model.addAttribute("user", new User());
-        System.out.println("User's id - "+DaoAuth.getUserId());
         User user = userService.findOne(DaoAuth.getUserId());
+        System.out.println("User's id - "+DaoAuth.getUserId());
         System.out.println(user.getPidrozdil_id());
         return "user";
     }
@@ -66,15 +66,15 @@ public class MainController {
 //        return user;
 //    }
 
-    @GetMapping("delete-{id}")
-    public String deleteUser(@PathVariable("id") int id) {
-//        User user = userService.findOne(id);
-        System.out.println(id+"  - id");
-//        model.addAttribute("Delete", userService.findOne(id));
-        userService.deleteOne(id);
-        System.out.println(userService.findOne(id).getSurname()+" was deleted");
-        return "redirect:/admin";
-    }
+//    @GetMapping("delete-{id}")
+//    public String deleteUser(@PathVariable("id") int id) {
+////        User user = userService.findOne(id);
+//        System.out.println(id+"  - id");
+////        model.addAttribute("Delete", userService.findOne(id));
+//        userService.deleteOne(id);
+//        System.out.println(userService.findOne(id).getSurname()+" was deleted");
+//        return "redirect:/admin";
+//    }
 
     //    @GetMapping("/registration")
 //    public String registration() {

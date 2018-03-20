@@ -7,6 +7,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "user_v")
@@ -24,7 +26,31 @@ public class User implements UserDetails{
     private int age;
     private int pidrozdil_id;
 
-//    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
+//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private List<UserLogin> userLogin;
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private Set<UserLogin> userLogins;
+
+    public Set<UserLogin> getUserLogins() {
+//        if (userLogins == null){
+//            userLogins = userLogin.
+//        }
+        return userLogins;
+    }
+
+    public void setUserLogins(Set<UserLogin> userLogins) {
+        this.userLogins = userLogins;
+    }
+
+    //    public List<UserLogin> getUserLogin() {
+//        return userLogin;
+//    }
+//
+//    public void setUserLogin(List<UserLogin> userLogin) {
+//        this.userLogin = userLogin;
+//    }
+
+    //    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
 //    private Gidrant gidrant;
 
 

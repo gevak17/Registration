@@ -1,6 +1,7 @@
 package gevak.service.impl;
 
 import gevak.dao.UserDAO;
+import gevak.dao.UserLoginDAO;
 import gevak.entity.User;
 import gevak.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Autowired
     UserDAO userDAO;
+
+    @Autowired
+    UserLoginDAO userLoginDAO;
 
 //    @Autowired
 //    PasswordEncoder passwordEncoder;

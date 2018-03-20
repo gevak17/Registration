@@ -1,6 +1,9 @@
 package gevak.dao;
 
 import gevak.entity.User;
+import gevak.entity.UserLogin;
+import gevak.service.UserLoginService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,6 +22,10 @@ import java.nio.charset.Charset;
 
 
 public class DaoAuth extends AbstractUserDetailsAuthenticationProvider {
+
+    @Autowired
+    UserLoginService userLoginService;
+
     // ~ Static fields/initializers
     // =====================================================================================
 
@@ -85,8 +92,15 @@ public class DaoAuth extends AbstractUserDetailsAuthenticationProvider {
         }
         if(userDetails instanceof  User){
             user = (User) userDetails;
+
+            System.out.println(userLoginService.findByUser(user.getPidrozdil_id()));
+//            userLoginService.findByUser(user.getPidrozdil_id());
+//            for (UserLogin userLogin :user.getUserLogins()) {
+//                System.out.println(userLogin.getPidrozdil_id());
+//            }
+            System.out.println("!!!!!!!!!!!!!!!!!!!!!");
         }
-//        System.out.println(userDetails);
+
     }
 
     public static int getUserId() {

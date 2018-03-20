@@ -11,8 +11,8 @@
 <center>
 <c:url var="loginUrl" value="/login"/>
 <form action="${loginUrl}" method="post">
-    <input id="userName" type="text" name="username" placeholder="username">
-    <input type="password" name="password" placeholder="password">
+    <input id="userName" type="text" name="username" placeholder="username" required autofocus>
+    <input type="password" name="password" placeholder="password" required>
     <input class="findUser" type="submit" value="login">
     <input type="hidden"
            name="${_csrf.parameterName}"
