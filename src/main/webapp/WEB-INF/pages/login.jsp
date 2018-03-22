@@ -24,7 +24,7 @@
     <c:if test="${param.logout!=null}">
         <h3>Ви закінчили сесію</h3>
     </c:if>
-
+<%----%>
 
 </form>
 
