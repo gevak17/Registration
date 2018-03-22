@@ -152,7 +152,7 @@
 
 <div class="parent">
 
-    <div id='map'></div>
+    <%--<div id='map'></div>--%>
     <button id="getLatLon">Знайти координати</button>
     <div id="editForm">
         <h2>Змінити</h2>
@@ -195,9 +195,9 @@
     <%--</div>--%>
 </div>
         <h3 style="text-align: right">Тут необхідно заповнити всі поля</h3>
-<script src="js/var.js"></script>
-<script src="js/mapserver.js"></script>
-<script src="js/map.js"></script>
+<%--<script src="js/var.js"></script>--%>
+<%--<script src="js/mapserver.js"></script>--%>
+<%--<script src="js/map.js"></script>--%>
 <%--<center>--%>
     <%--<button id="btn">Всі користувачі</button>--%>
     <%--<div class="users"></div>--%>
